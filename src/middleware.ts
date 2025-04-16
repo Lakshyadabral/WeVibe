@@ -42,7 +42,7 @@ export default auth(async (req) => {
 
     if (userRole !== 'Admin') {
       // Optional: redirect to a "not authorized" page or home
-      return NextResponse.redirect(new URL('/home', req.url));
+      return NextResponse.redirect(new URL('/admin', req.url));
     }
   }
 
