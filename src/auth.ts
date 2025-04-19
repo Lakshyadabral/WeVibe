@@ -12,8 +12,8 @@ async function getUser(email: string) {
   try {
     return await db.user.findUnique({ where: { email } });
   } catch (error) {
-    console.error("Failed to fetch user:", error);
-    throw new Error("Failed to fetch user.");
+    console.error("❌ Failed to fetch user:", error);
+    return null;
   }
 }
 
@@ -24,37 +24,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   debug: true,
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
+
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        const parsedCredentials = z
+        const parsed = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
 
-        if (!parsedCredentials.success) {
-          console.log("Invalid credentials format");
-          return null;
-        }
+        if (!parsed.success) return null;
 
-        const { email, password } = parsedCredentials.data;
+        const { email, password } = parsed.data;
         const user = await getUser(email);
 
-        if (!user || !user.password) {
-          console.log("No user found or user uses OAuth");
-          return null;
-        }
+        if (!user || !user.password) return null;
 
-        try {
-          const passwordsMatch = await bcrypt.compare(password, user.password);
-          if (!passwordsMatch) {
-            console.log("Password mismatch");
-            return null;
-          }
-          return user;
-        } catch (error) {
-          console.error("Error comparing passwords:", error);
-          return null;
-        }
+        const isMatch = await bcrypt.compare(password, user.password);
+        return isMatch ? user : null;
       },
     }),
 
@@ -68,28 +54,32 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
     }),
   ],
+
   callbacks: {
     async signIn({ user, account }) {
+      // Block OAuth for admin accounts
       if (
         account?.provider !== "credentials" &&
         ADMIN_EMAILS.includes(user.email ?? "")
       ) {
-        console.log("🚫 OAuth login blocked for admin email:", user.email);
-        return false; // ❌ Block login
+        console.log("🚫 Blocked Google/Facebook login for admin:", user.email);
+        return false;
       }
 
-      return true; // ✅ Allow others
+      return true;
     },
 
     async jwt({ token, user }) {
+      // Initial login
       if (user) {
         token.id = user.id;
         token.email = user.email;
         token.role = user.role;
       }
 
-      if (!token.role) {
-        const dbUser = await getUser(token.email as string);
+      // Ensure token always includes role
+      if (!token.role && token.email) {
+        const dbUser = await getUser(token.email);
         if (dbUser) {
           token.role = dbUser.role;
         }
@@ -101,13 +91,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async session({ session, token }) {
       if (session.user && token?.id) {
         session.user.id = token.id as string;
-        const dbUser = await getUser(session.user.email!);
-        if (dbUser) {
-          session.user.role = dbUser.role;
-          session.user.image = dbUser.image || session.user.image;
-        }
+        session.user.role = token.role as string;
       }
-
       return session;
     },
   },
