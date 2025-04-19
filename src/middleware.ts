@@ -13,34 +13,6 @@ export default auth(async (req) => {
   console.log(" Auth middleware triggered");
   console.log(" User:", req.auth?.user);
 
-
-  // Define public routes
-  const publicRoutes = [
-    '/auth/sign-in',
-    '/auth/sign-up',
-    '/auth/error',
-    '/api/auth',
-  ];
-
-  const isPublicRoute = publicRoutes.some((route) =>
-    pathname.startsWith(route)
-  );
-
-  // Allow access to public routes and static files
-  if (
-    isPublicRoute ||
-    pathname.startsWith('/_next') ||
-    pathname.includes('.') // static files
-  ) {
-    return;
-  }
-
-  // Redirect unauthenticated users to sign-in
-  if (!isLoggedIn) {
-    return NextResponse.redirect(new URL('/auth/sign-in', req.url));
-  }
-
-  // Restrict /admin route to only users with "Admin" role
   if (pathname.startsWith("/admin")) {
     const userRole = req.auth?.user?.role;
     const userEmail = req.auth?.user?.email;
@@ -52,35 +24,6 @@ export default auth(async (req) => {
         new URL("/auth/sign-in?message=unauthorized", req.url)
       );
     }
-  }
-
-
-  if (pathname.startsWith('/onboarding')) {
-    const userProfileComplete = req.auth?.user?.profileComplete;
-
-    if (userProfileComplete) {
-      // Optional: redirect to a "not authorized" page or home
-      return NextResponse.redirect(new URL('/home', req.url));
-    }
-  }
-
-  // Handle logout and delete cookies
-  if (pathname === '/auth/sign-out') {
-    const response = NextResponse.redirect(new URL('/auth/sign-in', req.url));
-
-    const cookieNames = [
-      'authjs.session-token',
-      '__Secure-authjs.session-token',
-      'authjs.csrf-token',
-      '__Host-authjs.csrf-token',
-      'authjs.callback-url',
-    ];
-
-    for (const name of cookieNames) {
-      response.cookies.delete(name);
-    }
-
-    return response;
   }
 
   return NextResponse.next();
