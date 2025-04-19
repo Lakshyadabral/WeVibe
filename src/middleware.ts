@@ -40,11 +40,11 @@ export default auth(async (req) => {
   if (pathname.startsWith('/admin')) {
     const userRole = req.auth?.user?.role;
 
-    if (userRole !== 'Admin') {
-      // Optional: redirect to a "not authorized" page or home
-      return NextResponse.redirect(new URL('/admin', req.url));
+    if (!userRole || userRole !== 'Admin') {
+      return NextResponse.redirect(new URL('/auth/sign-in?message=unauthorized', req.url));
     }
   }
+
 
   if (pathname.startsWith('/onboarding')) {
     const userProfileComplete = req.auth?.user?.profileComplete;
