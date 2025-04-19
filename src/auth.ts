@@ -6,7 +6,7 @@ import { authConfig } from "./auth.config";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { db } from "@/lib/db"; 
+import { db } from "@/lib/db"; // ✅ correct import
 
 async function getUser(email: string) {
   try {
@@ -28,22 +28,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        const parsedCredentials = z
+        const parsed = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
 
-        if (!parsedCredentials.success) {
-          console.log("Invalid credentials format");
-          return null;
-        }
+        if (!parsed.success) return null;
 
-        const { email, password } = parsedCredentials.data;
+        const { email, password } = parsed.data;
         const user = await getUser(email);
 
-        if (!user || !user.password) {
-          console.log("No user found or user uses OAuth");
-          return null;
-        }
+        if (!user || !user.password) return null;
 
         const passwordsMatch = await bcrypt.compare(password, user.password);
         return passwordsMatch ? user : null;
@@ -75,12 +69,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
 
     async jwt({ token, user }) {
+      // ✅ On first login
       if (user) {
         token.id = user.id;
         token.email = user.email;
-        token.role = user.role;
+        token.role = user.role; // ✅ send to middleware
       }
 
+      // ✅ On token reuse (server loads old token)
       if (!token.role && token.email) {
         const dbUser = await getUser(token.email);
         if (dbUser) {
@@ -94,10 +90,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async session({ session, token }) {
       if (session.user && token?.id) {
         session.user.id = token.id as string;
-
         const dbUser = await getUser(session.user.email!);
         if (dbUser) {
-          session.user.role = dbUser.role;
+          session.user.role = dbUser.role; // ✅ this is for client-side pages
           session.user.image = dbUser.image || session.user.image;
         }
       }
