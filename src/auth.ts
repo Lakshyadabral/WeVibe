@@ -6,7 +6,7 @@ import { authConfig } from "./auth.config";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { db } from "@/lib/db"; 
+import { db } from "@/lib/db";
 
 async function getUser(email: string) {
   try {
@@ -16,6 +16,9 @@ async function getUser(email: string) {
     throw new Error("Failed to fetch user.");
   }
 }
+
+// Prevent OAuth login for protected admin emails
+const ADMIN_EMAILS = ["lakshya@roommate.com", "admin@wevibe.com"];
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -55,33 +58,49 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
       },
     }),
+
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      async profile(profile) {
+        if (ADMIN_EMAILS.includes(profile.email)) {
+          throw new Error("Admin accounts must use credentials login.");
+        }
+        return profile;
+      },
     }),
+
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+      async profile(profile) {
+        if (ADMIN_EMAILS.includes(profile.email)) {
+          throw new Error("Admin accounts must use credentials login.");
+        }
+        return profile;
+      },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
+      // First-time login
       if (user) {
         token.id = user.id;
         token.email = user.email;
         token.role = user.role;
       }
-    
+
+      // On subsequent requests
       if (!token.role) {
         const dbUser = await getUser(token.email as string);
         if (dbUser) {
           token.role = dbUser.role;
         }
       }
-    
+
       return token;
     },
-    
+
     async session({ session, token }) {
       if (session.user && token?.id) {
         session.user.id = token.id as string;

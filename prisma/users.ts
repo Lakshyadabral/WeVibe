@@ -558,7 +558,7 @@ export const users = [
       "name": "Ashley Garcia",
       "email": "ashley.garcia16@example.com",
       "password": "Test@123",
-      "image": "https://randomuser.me/api/portraits/men/16.jpg",
+      "image": "https://res.cloudinary.com/dkierfkuf/image/upload/v1744843913/kmswitqrklo9q95sa6bb.jpg",
       "bio": "Hello, I am Ashley. Looking for a roommate!",
       "role": "User",
       "createdAt": "2025-03-09T17:10:45.120Z",

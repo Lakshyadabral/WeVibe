@@ -19,7 +19,7 @@ export const adminUsers = [
     },
     {
       name: "Tijan Jallow",
-      email: "tijan@roommate.ai",
+      email: "tijan@roommate.com",
       image: "https://randomuser.me/api/portraits/men/32.jpg",
       password: "Test@123",
     },
