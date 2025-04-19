@@ -6,7 +6,7 @@ import { authConfig } from "./auth.config";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { db } from "@/lib/db"; // ✅ Correct import path for Prisma client
+import { db } from "@/lib/db"; 
 
 async function getUser(email: string) {
   try {
@@ -68,11 +68,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
+        token.email = user.email;
         token.role = user.role;
       }
+    
+      if (!token.role) {
+        const dbUser = await getUser(token.email as string);
+        if (dbUser) {
+          token.role = dbUser.role;
+        }
+      }
+    
       return token;
     },
-
+    
     async session({ session, token }) {
       if (session.user && token?.id) {
         session.user.id = token.id as string;
