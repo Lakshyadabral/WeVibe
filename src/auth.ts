@@ -17,8 +17,7 @@ async function getUser(email: string) {
   }
 }
 
-// Prevent OAuth login for protected admin emails
-const ADMIN_EMAILS = ["lakshya@roommate.com", "admin@wevibe.com"];
+const ADMIN_EMAILS = ["lakshya@roommate.com"];
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -62,35 +61,33 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      async profile(profile) {
-        if (ADMIN_EMAILS.includes(profile.email)) {
-          throw new Error("Admin accounts must use credentials login.");
-        }
-        return profile;
-      },
     }),
 
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
-      async profile(profile) {
-        if (ADMIN_EMAILS.includes(profile.email)) {
-          throw new Error("Admin accounts must use credentials login.");
-        }
-        return profile;
-      },
     }),
   ],
   callbacks: {
+    async signIn({ user, account }) {
+      if (
+        account?.provider !== "credentials" &&
+        ADMIN_EMAILS.includes(user.email ?? "")
+      ) {
+        console.log("🚫 OAuth login blocked for admin email:", user.email);
+        return false; // ❌ Block login
+      }
+
+      return true; // ✅ Allow others
+    },
+
     async jwt({ token, user }) {
-      // First-time login
       if (user) {
         token.id = user.id;
         token.email = user.email;
         token.role = user.role;
       }
 
-      // On subsequent requests
       if (!token.role) {
         const dbUser = await getUser(token.email as string);
         if (dbUser) {
@@ -106,7 +103,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.id = token.id as string;
         const dbUser = await getUser(session.user.email!);
         if (dbUser) {
-          (session.user as any).role = dbUser.role;
+          session.user.role = dbUser.role;
           session.user.image = dbUser.image || session.user.image;
         }
       }
