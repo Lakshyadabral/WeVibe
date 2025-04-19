@@ -14,6 +14,8 @@ type Props = {
 export default function DashboardStats({ stats }: Props) {
   const router = useRouter();
 
+  console.log("Dashboard stats:", stats); 
+
   const cards = [
     {
       label: "Total Users",
