@@ -23,15 +23,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const session = await auth();
 
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-        <body className="min-h-screen bg-gray-2 dark:bg-dark">
-          <SessionProvider session={session}>
-            <Providers>
-              <NextTopLoader showSpinner={false} />
-              {children}
-            </Providers>
-          </SessionProvider>
-        </body>
-      </html>
+    <html lang="en" suppressHydrationWarning>
+    <head>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              document.documentElement.classList.add('dark');
+            })();
+          `,
+        }}
+      />
+    </head>
+    <body className="min-h-screen bg-gray-2 dark:bg-dark">
+      <SessionProvider session={session}>
+        <Providers>
+          <NextTopLoader showSpinner={false} />
+          {children}
+        </Providers>
+      </SessionProvider>
+    </body>
+  </html>
+  
   );
 }
