@@ -21,10 +21,9 @@ export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = async () => {
-    await logout();
-    window.location.href = "/auth/sign-out";
-  }
-
+    await signOut({ callbackUrl: "/auth/sign-in" });
+  };
+  
   useEffect(() => {
     if(!session) update()
   }, [session?.user])
