@@ -1,4 +1,4 @@
-// src/auth.ts
+// auth.ts (must be in root)
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
@@ -7,32 +7,55 @@ import { authConfig } from "./auth.config";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { db } from "@/lib/db";
+import { db } from "@/lib/db"; // ✅ using db wrapper instead of raw prisma
 
 async function getUser(email: string) {
-  return await db.user.findUnique({ where: { email } });
+  try {
+    return await db.user.findUnique({ where: { email } });
+  } catch (error) {
+    console.error("❌ Failed to fetch user:", error);
+    throw new Error("Failed to fetch user.");
+  }
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  adapter: PrismaAdapter(db),
+  debug: true,
+  adapter: PrismaAdapter(db), // ✅ using db here as well
   session: { strategy: "jwt" },
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        const parsed = z
+        const parsedCredentials = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
 
-        if (!parsed.success) return null;
+        if (!parsedCredentials.success) {
+          console.log("❌ Invalid credentials format");
+          return null;
+        }
 
-        const { email, password } = parsed.data;
+        const { email, password } = parsedCredentials.data;
         const user = await getUser(email);
 
-        if (!user || !user.password) return null;
+        if (!user || !user.password) {
+          console.log("❌ No user found or user uses OAuth:", email);
+          return null;
+        }
 
-        const isMatch = await bcrypt.compare(password, user.password);
-        return isMatch ? user : null;
+        try {
+          const isMatch = await bcrypt.compare(password, user.password);
+          if (!isMatch) {
+            console.log("❌ Password mismatch for:", email);
+            return null;
+          }
+
+          console.log("✅ Successful login for:", email);
+          return user;
+        } catch (error) {
+          console.error("❌ Error comparing passwords:", error);
+          return null;
+        }
       },
     }),
     GoogleProvider({
@@ -58,8 +81,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (dbUser) {
           token.role = dbUser.role;
 
-          // Auto-assign Admin role
-          if (!dbUser.role && token.email === "lakshya@roommate.com") {
+          // Optional auto-assign admin if somehow missing
+          if (!dbUser.role && ["lakshya@roommate.com", "mandeep@roommate.com", "vinas@roommate.com", "tijan@roommate.com"].includes(token.email)) {
             await db.user.update({
               where: { email: token.email },
               data: { role: "Admin" },
@@ -72,10 +95,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token;
     },
 
-    // ✅ Add this block — it was missing!
     async session({ session, token }) {
       if (session.user && token?.id) {
         session.user.id = token.id as string;
+
         const dbUser = await getUser(session.user.email!);
         if (dbUser) {
           session.user.role = dbUser.role;

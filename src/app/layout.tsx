@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import { Providers } from "./providers";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "../auth";
+import { auth } from "../../auth";
 
 export const metadata: Metadata = {
   title: {

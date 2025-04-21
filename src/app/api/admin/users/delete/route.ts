@@ -1,26 +1,25 @@
+// src/app/api/admin/users/delete/route.ts
+
 import { db } from "@/lib/db";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const formData = await req.formData();
-    const userId = formData.get("userId") as string;
+    const { userId } = await req.json();
 
-    if (!userId) {
-      return new Response("Missing userId", { status: 400 });
-    }
+    // ✅ Step 1: Delete preferences first (if any)
+    await db.preferences.deleteMany({
+      where: { userId },
+    });
 
+    // ✅ Step 2: Then delete user
     await db.user.delete({
       where: { id: userId },
     });
 
-    return new Response(null, {
-      status: 302,
-      headers: {
-        Location: "/admin/users",
-      },
-    });
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error("❌ DELETE USER ERROR:", error);
-    return new Response("Failed to delete user", { status: 500 });
+    return NextResponse.json({ error: "Failed to delete user" }, { status: 500 });
   }
 }

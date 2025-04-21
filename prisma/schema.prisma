@@ -57,7 +57,7 @@ model Preferences {
   smoking           Boolean @default(false)
   cooking           String
 
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id] )
 }
 
 model Match {
