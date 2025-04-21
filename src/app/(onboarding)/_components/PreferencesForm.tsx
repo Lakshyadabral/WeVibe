@@ -4,8 +4,6 @@ import { useState } from 'react';
 
 type Preferences = {
   preferredLocation: string;
-  ethnicity: string;
-  religion: string;
   ageRange: { min: number; max: number };
   genderPreference: string;
   accommodationType: string;
@@ -17,6 +15,8 @@ type Preferences = {
     smoking: boolean;
   };
   cooking: string;
+  communicationStyle: string;
+  socialEnergyLevel: string;
 };
 
 type Props = {
@@ -56,8 +56,9 @@ const PreferencesForm = ({ initialData, onNext }: Props) => {
     const newErrors: Record<string, string> = {};
 
     if (!form.preferredLocation) newErrors.preferredLocation = 'Required';
-    if (!form.ethnicity) newErrors.ethnicity = 'Required';
-    if (!form.religion) newErrors.religion = 'Required';
+    if (!form.communicationStyle) newErrors.communicationStyle = 'Required';
+    if (!form.socialEnergyLevel) newErrors.socialEnergyLevel = 'Required';
+    
 
     if (!form.ageRange.min || !form.ageRange.max || form.ageRange.min < 18) {
       newErrors['ageRange.min'] = 'Enter valid min age (18+)';
@@ -120,34 +121,31 @@ const PreferencesForm = ({ initialData, onNext }: Props) => {
         {getError('preferredLocation')}
       </div>
 
-      {/* Ethnicity */}
-      <div className="space-y-2">
-        <label className="block font-medium text-body-sm text-dark dark:text-white">Ethnicity</label>
-        <select name="ethnicity" value={form.ethnicity} onChange={handleChange} className="w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition focus:border-primary disabled:cursor-default disabled:bg-gray-2 data-[active=true]:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary dark:disabled:bg-dark dark:data-[active=true]:border-primary">
-          <option value="">Select...</option>
-          <option value="Asian">Asian</option>
-          <option value="Black">Black</option>
-          <option value="White">White</option>
-          <option value="Hispanic">Hispanic</option>
-          <option value="Other">Other</option>
-        </select>
-        {getError('ethnicity')}
-      </div>
-
-      {/* Religion */}
-      <div className="space-y-2">
-        <label className="block font-medium text-body-sm text-dark dark:text-white">Religion</label>
-        <select name="religion" value={form.religion} onChange={handleChange} className="w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition focus:border-primary disabled:cursor-default disabled:bg-gray-2 data-[active=true]:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary dark:disabled:bg-dark dark:data-[active=true]:border-primary">
-          <option value="">Select...</option>
-          <option value="Christian">Christian</option>
-          <option value="Muslim">Muslim</option>
-          <option value="Hindu">Hindu</option>
-          <option value="Sikh">Sikh</option>
-          <option value="Atheist">Atheist</option>
-          <option value="Other">Other</option>
-        </select>
-        {getError('religion')}
-      </div>
+   {/* Communication Style */}
+<div className="space-y-2">
+  <label className="block font-medium text-body-sm text-dark dark:text-white">Communication Style</label>
+  <select name="communicationStyle" value={form.communicationStyle} onChange={handleChange} className="w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none dark:border-dark-3 dark:bg-dark-2">
+    <option value="">Select...</option>
+    <option value="Direct">Direct</option>
+    <option value="Reserved">Reserved</option>
+    <option value="Balanced">Balanced</option>
+    <option value="Expressive">Expressive</option>
+    <option value="Laid-back">Laid-back</option>
+  </select>
+  {getError('communicationStyle')}
+</div>
+{/* Social Energy Level */}
+<div className="space-y-2">
+  <label className="block font-medium text-body-sm text-dark dark:text-white">Social Energy Level</label>
+  <select name="socialEnergyLevel" value={form.socialEnergyLevel} onChange={handleChange} className="w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none dark:border-dark-3 dark:bg-dark-2">
+    <option value="">Select...</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+    <option value="Depends on mood">Depends on mood</option>
+  </select>
+  {getError('socialEnergyLevel')}
+</div>
 
       {/* Age Range */}
       <div className="flex gap-4">

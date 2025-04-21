@@ -73,7 +73,15 @@ export default function MatchDetailsModal({ isOpen, onClose, match }: MatchDetai
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+            <div>
+              <strong>Communication Style</strong>
+              <p>{match.preferences?.communicationStyle || "N/A"}</p>
+          </div>
+           <div>
+             <strong>Social Energy Level</strong>
+             <p>{match.preferences?.socialEnergyLevel || "N/A"}</p>
+          </div>
               {match.preferences?.drinking && (
                 <span className="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">🌲 Cannabis friendly</span>
               )}

@@ -16,8 +16,8 @@ export default function OnboardingPage() {
     sex: '',
     occupation: '',
     preferredLocation: '',
-    ethnicity: '',
-    religion: '',
+    communicationStyle: '',
+    socialEnergyLevel: '',    
     ageRange: { min: 18, max: 35 },
     genderPreference: '',
     accommodationType: '',
@@ -67,8 +67,8 @@ export default function OnboardingPage() {
         <PreferencesForm
           initialData={{
             preferredLocation: formData.preferredLocation,
-            ethnicity: formData.ethnicity,
-            religion: formData.religion,
+            communicationStyle: formData.communicationStyle,
+            socialEnergyLevel: formData.socialEnergyLevel,
             ageRange: formData.ageRange,
             genderPreference: formData.genderPreference,
             accommodationType: formData.accommodationType,
@@ -105,8 +105,8 @@ export default function OnboardingPage() {
         <p><strong>Age:</strong> {formData.age}</p>
         <p><strong>Sex:</strong> {formData.sex}</p>
         <p><strong>Preferred Location:</strong> {formData.preferredLocation}</p>
-        <p><strong>Ethnicity:</strong> {formData.ethnicity}</p>
-        <p><strong>Religion:</strong> {formData.religion}</p>
+        <p><strong>Communication Style:</strong> {formData.communicationStyle}</p>
+        <p><strong>Social Energy Level:</strong> {formData.socialEnergyLevel}</p>
         <p><strong>Gender Preference:</strong> {formData.genderPreference}</p>
         <p><strong>Accommodation Type:</strong> {formData.accommodationType}</p>
         <p><strong>Cooking:</strong> {formData.cooking}</p>

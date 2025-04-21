@@ -35,9 +35,8 @@ export async function PATCH(req: Request, { params }: { params: { userId: string
     const body = await req.json();
 
     const updateData: Record<string, any> = {};
-
-    if (body.ethnicity) updateData.ethnicity = body.ethnicity;
-    if (body.religion) updateData.religion = body.religion;
+    if (body.communicationStyle) updateData.communicationStyle = body.communicationStyle;
+    if (body.socialEnergyLevel) updateData.socialEnergyLevel = body.socialEnergyLevel;
     if (body.minAge) updateData.minAge = body.minAge;
     if (body.maxAge) updateData.maxAge = body.maxAge;
     if (body.genderPreference) updateData.genderPreference = body.genderPreference;

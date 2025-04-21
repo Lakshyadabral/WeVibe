@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ConfirmModal from "./ConfirmModal";
 import PremiumLimitModal from "./PremiumLimitModal";
-import PricingModal from "./PricingModal"; // ✅ Added
+import PricingModal from "./PricingModal"; 
 import MatchDetailsModal from "./MatchDetailsModal";
 
 type MatchCardProps = {
@@ -39,7 +39,7 @@ export default function MatchCard({ match, onSubmit, userId }: MatchCardProps) {
       });
 
       if (response.status === 403) {
-        setShowPremiumModal(true); // ✅ Show Premium modal if limit hit
+        setShowPremiumModal(true);
         return;
       }
 
@@ -154,7 +154,13 @@ export default function MatchCard({ match, onSubmit, userId }: MatchCardProps) {
           {/* Bio */}
           {match.bio && (
             <p className="mt-2 text-gray-300 text-base leading-relaxed">
-              {match.bio} <span className="text-blue-400 cursor-pointer">more</span>
+              {match.bio} <span
+              className="text-blue-400 cursor-pointer hover:text-blue-500"
+              onClick={() => setShowDetailsModal(true)}
+            >
+              more
+            </span>
+
             </p>
           )}
 

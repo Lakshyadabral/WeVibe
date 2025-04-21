@@ -5,8 +5,8 @@ import { useSession } from 'next-auth/react';
 import { PencilSquareIcon } from '@/assets/icons';
 
 type Preferences = {
-  ethnicity?: string;
-  religion?: string;
+  communicationStyle: string;
+  socialEnergyLevel: string;
   minAge: number;
   maxAge: number;
   genderPreference: string;
@@ -123,31 +123,38 @@ const PreferencePage = () => {
           </div>
 
           <div>
-            <label>Ethnicity:</label>
-            <select name="ethnicity" value={formState?.ethnicity || ''} onChange={handleInputChange} className="mt-1 w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition focus:border-primary disabled:cursor-default disabled:bg-gray-2 data-[active=true]:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary dark:disabled:bg-dark dark:data-[active=true]:border-primary">
-              <option value="">Select...</option>
-              <option value="Asian">Asian</option>
-              <option value="Black">Black</option>
-              <option value="White">White</option>
-              <option value="Hispanic">Hispanic</option>
-              <option value="Other">Other</option>
-            </select>
-            {getError('ethnicity')}
-          </div>
 
-          <div>
-            <label>Religion:</label>
-            <select name="religion" value={formState?.religion || ''} onChange={handleInputChange} className="mt-1 w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition focus:border-primary disabled:cursor-default disabled:bg-gray-2 data-[active=true]:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary dark:disabled:bg-dark dark:data-[active=true]:border-primary">
-              <option value="">Select...</option>
-              <option value="Christian">Christian</option>
-              <option value="Muslim">Muslim</option>
-              <option value="Hindu">Hindu</option>
-              <option value="Sikh">Sikh</option>
-              <option value="Atheist">Atheist</option>
-              <option value="Other">Other</option>
-            </select>
-            {getError('religion')}
-          </div>
+  <label>Communication Style:</label>
+  <select
+    name="communicationStyle"
+    value={formState?.communicationStyle || ''}
+    onChange={handleInputChange}
+    className="mt-1 w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition focus:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary"
+  >
+    <option value="">Select...</option>
+    <option value="Direct">Direct</option>
+    <option value="Reserved">Reserved</option>
+    <option value="Balanced">Balanced</option>
+    <option value="Laid-back">Laid-back</option>
+    <option value="Expressive">Expressive</option>
+  </select>
+</div>
+
+<div>
+  <label>Social Energy Level:</label>
+  <select
+    name="socialEnergyLevel"
+    value={formState?.socialEnergyLevel || ''}
+    onChange={handleInputChange}
+    className="mt-1 w-full p-2 rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition focus:border-primary dark:border-dark-3 dark:bg-dark-2 dark:focus:border-primary"
+  >
+    <option value="">Select...</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+    <option value="Depends on mood">Depends on mood</option>
+  </select>
+</div>
 
           <div className="flex gap-4">
             <div className="flex-1">
@@ -244,8 +251,8 @@ const PreferencePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-800 dark:text-white">
             <div className="flex flex-col gap-2">
               <div><span className="font-semibold">Preferred Location:</span> {preferences.preferredLocation}</div>
-              <div><span className="font-semibold">Ethnicity:</span> {preferences.ethnicity || 'Not specified'}</div>
-              <div><span className="font-semibold">Religion:</span> {preferences.religion || 'Not specified'}</div>
+              <div><span className="font-semibold">Communication Style:</span> {preferences.communicationStyle}</div>
+              <div><span className="font-semibold">Social Energy Level:</span> {preferences.socialEnergyLevel}</div>
               <div><span className="font-semibold">Age Range:</span> {preferences.minAge} - {preferences.maxAge}</div>
               <div><span className="font-semibold">Gender Preference:</span> {preferences.genderPreference}</div>
               <div><span className="font-semibold">Occupation:</span> {preferences.occupation}</div>

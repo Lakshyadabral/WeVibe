@@ -39,8 +39,6 @@ model User {
 model Preferences {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String  @unique @db.ObjectId
-  ethnicity         String?
-  religion          String?
   minAge            Int
   maxAge            Int
   sex               String
@@ -56,6 +54,8 @@ model Preferences {
   drinking          Boolean @default(false)
   smoking           Boolean @default(false)
   cooking           String
+  communicationStyle  String
+  socialEnergyLevel   String
 
   user User @relation(fields: [userId], references: [id] )
 }

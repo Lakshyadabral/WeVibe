@@ -11,8 +11,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Uptown",
-      "ethnicity": "Other",
-      "religion": "Other",
       "ageRange": {
         "min": 21,
         "max": 38
@@ -34,7 +32,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Balanced",
+      "socialEnergyLevel": "Medium"
     },
     {
      
@@ -48,8 +48,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
    
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Hindu",
       "ageRange": {
         "min": 20,
         "max": 32
@@ -71,7 +69,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Reserved",
+      "socialEnergyLevel": "High"
     },
     {
     
@@ -85,8 +85,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Suburb",
-      "ethnicity": "Hispanic",
-      "religion": "Other",
       "ageRange": {
         "min": 25,
         "max": 34
@@ -108,7 +106,10 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Direct",
+      "socialEnergyLevel": "Low"
+      
     },
     {
      
@@ -122,8 +123,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Downtown",
-      "ethnicity": "Other",
-      "religion": "Muslim",
       "ageRange": {
         "min": 22,
         "max": 34
@@ -145,7 +144,10 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Balanced",
+      "socialEnergyLevel": "Medium"
+
     },
     {
     
@@ -159,8 +161,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Uptown",
-      "ethnicity": "Other",
-      "religion": "Hindu",
       "ageRange": {
         "min": 27,
         "max": 34
@@ -182,7 +182,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Expressive",
+      "socialEnergyLevel": "Medium"
     },
     {
    
@@ -196,8 +198,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Downtown",
-      "ethnicity": "Other",
-      "religion": "Buddhist",
       "ageRange": {
         "min": 24,
         "max": 26
@@ -219,7 +219,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Expressive",
+      "socialEnergyLevel": "Medium"
     },
     {
      
@@ -233,8 +235,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "Downtown",
-      "ethnicity": "Asian",
-      "religion": "Buddhist",
       "ageRange": {
         "min": 19,
         "max": 29
@@ -256,7 +256,9 @@ export const users = [
         "drinking": false,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Laid-back",
+      "socialEnergyLevel": "Depends on mood"
     },
     {
       "name": "Daniel Johnson",
@@ -269,8 +271,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Downtown",
-      "ethnicity": "White",
-      "religion": "Hindu",
       "ageRange": {
         "min": 25,
         "max": 27
@@ -292,7 +292,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Reserved",
+      "socialEnergyLevel": "High"
     },
     {
      
@@ -306,8 +308,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Suburb",
-      "ethnicity": "Black",
-      "religion": "Hindu",
       "ageRange": {
         "min": 24,
         "max": 32
@@ -329,7 +329,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+       "communicationStyle": "Direct", 
+       "socialEnergyLevel": "High"
     },
     {
     
@@ -343,8 +345,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "Suburb",
-      "ethnicity": "Other",
-      "religion": "Other",
       "ageRange": {
         "min": 24,
         "max": 32
@@ -366,7 +366,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "Low"
     },
     {
      
@@ -380,8 +382,7 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
 
       "preferredLocation": "City Center",
-      "ethnicity": "Hispanic",
-      "religion": "Muslim",
+
       "ageRange": {
         "min": 30,
         "max": 31
@@ -403,7 +404,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Balanced", 
+      "socialEnergyLevel": "Medium"
     },
     {
      
@@ -417,8 +420,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
    
       "preferredLocation": "Downtown",
-      "ethnicity": "Black",
-      "religion": "Hindu",
       "ageRange": {
         "min": 21,
         "max": 33
@@ -440,7 +441,9 @@ export const users = [
         "drinking": false,
         "smoking": false
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Expressive", 
+      "socialEnergyLevel": "High"
     },
     {
      
@@ -454,8 +457,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "Suburb",
-      "ethnicity": "Asian",
-      "religion": "Hindu",
       "ageRange": {
         "min": 18,
         "max": 31
@@ -477,7 +478,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Laid-back",
+      "socialEnergyLevel": "Medium"
     },
     {
   
@@ -491,8 +494,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
 
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Other",
       "ageRange": {
         "min": 18,
         "max": 33
@@ -514,7 +515,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Direct",
+       "socialEnergyLevel": "Low"
     },
     {
     
@@ -528,8 +531,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Uptown",
-      "ethnicity": "Hispanic",
-      "religion": "Jewish",
       "ageRange": {
         "min": 23,
         "max": 26
@@ -551,7 +552,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Expressive", 
+      "socialEnergyLevel": "Low"
     },
     {
  
@@ -565,8 +568,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "City Center",
-      "ethnicity": "White",
-      "religion": "Christian",
       "ageRange": {
         "min": 31,
         "max": 30
@@ -588,7 +589,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "High"
     },
     {
    
@@ -602,8 +605,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Suburb",
-      "ethnicity": "White",
-      "religion": "Other",
       "ageRange": {
         "min": 26,
         "max": 26
@@ -625,7 +626,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Balanced",
+       "socialEnergyLevel": "High" 
     },
     {
      
@@ -639,8 +642,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
       
       "preferredLocation": "Downtown",
-      "ethnicity": "Black",
-      "religion": "Muslim",
       "ageRange": {
         "min": 21,
         "max": 30
@@ -662,7 +663,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Laid-back", 
+      "socialEnergyLevel": "High"
     },
     {
       
@@ -676,8 +679,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "City Center",
-      "ethnicity": "Asian",
-      "religion": "Other",
       "ageRange": {
         "min": 22,
         "max": 34
@@ -699,7 +700,9 @@ export const users = [
         "drinking": false,
         "smoking": false
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Direct",
+      "socialEnergyLevel": "Medium"
     },
     {
      
@@ -713,8 +716,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "Suburb",
-      "ethnicity": "Black",
-      "religion": "Jewish",
       "ageRange": {
         "min": 24,
         "max": 29
@@ -736,7 +737,9 @@ export const users = [
         "drinking": false,
         "smoking": false
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Expressive", 
+      "socialEnergyLevel": "Medium"
     },
     {
     
@@ -750,8 +753,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Suburb",
-      "ethnicity": "Asian",
-      "religion": "Other",
       "ageRange": {
         "min": 26,
         "max": 33
@@ -773,7 +774,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "Medium"
     },
     {
      
@@ -787,8 +790,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
       
       "preferredLocation": "Uptown",
-      "ethnicity": "Black",
-      "religion": "Muslim",
       "ageRange": {
         "min": 31,
         "max": 28
@@ -810,7 +811,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "Medium"
     },
     {
       
@@ -824,8 +827,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Downtown",
-      "ethnicity": "Mixed",
-      "religion": "Buddhist",
       "ageRange": {
         "min": 18,
         "max": 26
@@ -847,7 +848,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Laid-back", 
+      "socialEnergyLevel": "Low"
     },
     {
  
@@ -861,8 +864,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
    
       "preferredLocation": "Downtown",
-      "ethnicity": "White",
-      "religion": "Muslim",
       "ageRange": {
         "min": 32,
         "max": 27
@@ -884,7 +885,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Balanced", 
+      "socialEnergyLevel": "Low"
     },
     {
       
@@ -898,8 +901,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
       
       "preferredLocation": "Suburb",
-      "ethnicity": "White",
-      "religion": "Hindu",
       "ageRange": {
         "min": 31,
         "max": 25
@@ -921,7 +922,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Direct", 
+      "socialEnergyLevel": "Depends on mood"
     },
     {
       
@@ -935,8 +938,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
    
       "preferredLocation": "Suburb",
-      "ethnicity": "Black",
-      "religion": "Other",
       "ageRange": {
         "min": 31,
         "max": 28
@@ -958,7 +959,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Reserved",
+      "socialEnergyLevel": "Depends on mood"
     },
     {
      
@@ -972,8 +975,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
       
       "preferredLocation": "City Center",
-      "ethnicity": "Hispanic",
-      "religion": "Christian",
       "ageRange": {
         "min": 27,
         "max": 34
@@ -995,7 +996,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Expressive",
+      "socialEnergyLevel": "Depends on mood"
     },
     {
      
@@ -1009,8 +1012,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
       
       "preferredLocation": "Uptown",
-      "ethnicity": "White",
-      "religion": "Christian",
       "ageRange": {
         "min": 30,
         "max": 31
@@ -1032,7 +1033,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Laid-back", 
+      "socialEnergyLevel": "Depends on mood"
     },
     {
       
@@ -1046,8 +1049,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "Downtown",
-      "ethnicity": "White",
-      "religion": "Hindu",
       "ageRange": {
         "min": 32,
         "max": 30
@@ -1069,7 +1070,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Balanced", 
+      "socialEnergyLevel": "Depends on mood" 
     },
     {
  
@@ -1083,8 +1086,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
       
       "preferredLocation": "Suburb",
-      "ethnicity": "Other",
-      "religion": "Christian",
       "ageRange": {
         "min": 24,
         "max": 33
@@ -1106,7 +1107,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Direct",
+      "socialEnergyLevel": "High"
     },
     {
     
@@ -1120,8 +1123,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "City Center",
-      "ethnicity": "Asian",
-      "religion": "Jewish",
       "ageRange": {
         "min": 31,
         "max": 30
@@ -1143,7 +1144,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "Low"
     },
     {
      
@@ -1157,8 +1160,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Christian",
       "ageRange": {
         "min": 22,
         "max": 33
@@ -1180,7 +1181,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Balanced", 
+      "socialEnergyLevel": "Medium"
     },
     {
       
@@ -1194,8 +1197,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Buddhist",
       "ageRange": {
         "min": 19,
         "max": 29
@@ -1217,7 +1218,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Expressive", 
+      "socialEnergyLevel": "Low"
     },
     {
      
@@ -1231,8 +1234,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
    
       "preferredLocation": "Uptown",
-      "ethnicity": "Asian",
-      "religion": "Buddhist",
       "ageRange": {
         "min": 22,
         "max": 32
@@ -1254,7 +1255,9 @@ export const users = [
         "drinking": false,
         "smoking": false
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Laid-back", 
+      "socialEnergyLevel": "Medium"
     },
     {
    
@@ -1268,8 +1271,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Hindu",
       "ageRange": {
         "min": 24,
         "max": 25
@@ -1291,7 +1292,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Direct", 
+      "socialEnergyLevel": "Low"
     },
     {
      
@@ -1305,8 +1308,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "Suburb",
-      "ethnicity": "Other",
-      "religion": "Jewish",
       "ageRange": {
         "min": 22,
         "max": 25
@@ -1328,7 +1329,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Expressive", 
+      "socialEnergyLevel": "High"
     },
     {
       
@@ -1342,8 +1345,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Suburb",
-      "ethnicity": "Asian",
-      "religion": "Hindu",
       "ageRange": {
         "min": 26,
         "max": 27
@@ -1365,7 +1366,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Balanced", 
+      "socialEnergyLevel": "Depends on mood"
     },
     {
    
@@ -1379,8 +1382,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Uptown",
-      "ethnicity": "Other",
-      "religion": "Other",
       "ageRange": {
         "min": 18,
         "max": 27
@@ -1402,7 +1403,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Laid-back", 
+      "socialEnergyLevel": "High"
     },
     {
       
@@ -1416,8 +1419,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
    
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Muslim",
       "ageRange": {
         "min": 29,
         "max": 30
@@ -1439,7 +1440,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+       "communicationStyle": "Direct", 
+       "socialEnergyLevel": "Medium"
     },
     {
      
@@ -1453,8 +1456,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
 
       "preferredLocation": "Suburb",
-      "ethnicity": "Mixed",
-      "religion": "Muslim",
       "ageRange": {
         "min": 18,
         "max": 29
@@ -1476,7 +1477,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "Medium"
     },
     {
  
@@ -1490,8 +1493,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
    
       "preferredLocation": "Downtown",
-      "ethnicity": "Black",
-      "religion": "Other",
       "ageRange": {
         "min": 27,
         "max": 34
@@ -1513,7 +1514,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Expressive", 
+      "socialEnergyLevel": "Medium"
     },
     {
 
@@ -1527,8 +1530,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
 
       "preferredLocation": "Uptown",
-      "ethnicity": "White",
-      "religion": "Hindu",
       "ageRange": {
         "min": 22,
         "max": 25
@@ -1550,7 +1551,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Laid-back", 
+      "socialEnergyLevel": "Low"
     },
     {
      
@@ -1564,8 +1567,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "Downtown",
-      "ethnicity": "Mixed",
-      "religion": "Jewish",
       "ageRange": {
         "min": 23,
         "max": 29
@@ -1587,7 +1588,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Balanced", 
+      "socialEnergyLevel": "Low"
     },
     {
      
@@ -1601,8 +1604,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
 
       "preferredLocation": "City Center",
-      "ethnicity": "Hispanic",
-      "religion": "Buddhist",
       "ageRange": {
         "min": 29,
         "max": 32
@@ -1624,7 +1625,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Direct", 
+      "socialEnergyLevel": "Depends on mood"
     },
     {
      
@@ -1638,8 +1641,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
      
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Christian",
       "ageRange": {
         "min": 19,
         "max": 33
@@ -1661,7 +1662,9 @@ export const users = [
         "drinking": false,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Expressive", 
+      "socialEnergyLevel": "Depends on mood"
     },
     {
      
@@ -1675,8 +1678,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "City Center",
-      "ethnicity": "Asian",
-      "religion": "Christian",
       "ageRange": {
         "min": 26,
         "max": 31
@@ -1698,7 +1699,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "Depends on mood"
     },
     {
      
@@ -1712,8 +1715,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
     
       "preferredLocation": "Suburb",
-      "ethnicity": "Asian",
-      "religion": "Other",
       "ageRange": {
         "min": 32,
         "max": 33
@@ -1735,7 +1736,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Laid-back", 
+      "socialEnergyLevel": "Depends on mood"
     },
     {
      
@@ -1749,8 +1752,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
 
       "preferredLocation": "Downtown",
-      "ethnicity": "White",
-      "religion": "Muslim",
       "ageRange": {
         "min": 19,
         "max": 27
@@ -1772,7 +1773,9 @@ export const users = [
         "drinking": true,
         "smoking": false
       },
-      "cooking": "Flexible"
+      "cooking": "Flexible",
+      "communicationStyle": "Balanced", 
+      "socialEnergyLevel": "High"
     },
     {
     
@@ -1786,8 +1789,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
       
       "preferredLocation": "City Center",
-      "ethnicity": "Other",
-      "religion": "Christian",
       "ageRange": {
         "min": 20,
         "max": 29
@@ -1809,7 +1810,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Eat out"
+      "cooking": "Eat out",
+      "communicationStyle": "Direct",
+      "socialEnergyLevel": "High"
     },
     {
       "name": "John Rodriguez",
@@ -1822,8 +1825,6 @@ export const users = [
       "updatedAt": "2025-03-09T17:10:45.120Z",
   
       "preferredLocation": "Suburb",
-      "ethnicity": "Asian",
-      "religion": "Hindu",
       "ageRange": {
         "min": 24,
         "max": 34
@@ -1845,7 +1846,9 @@ export const users = [
         "drinking": true,
         "smoking": true
       },
-      "cooking": "Once a day"
+      "cooking": "Once a day",
+      "communicationStyle": "Reserved", 
+      "socialEnergyLevel": "Low"
     }
   ]
   

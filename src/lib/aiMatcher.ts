@@ -18,8 +18,9 @@ function normalizePreferences(pref: any) {
     drinking: pref.drinking,
     cooking: pref.cooking,
     genderPreference: pref.genderPreference,
-    religion: pref.religion,
-    ethnicity: pref.ethnicity
+    communicationStyle: pref.communicationStyle,
+    socialEnergyLevel: pref.socialEnergyLevel,
+
   };
 }
 
@@ -74,8 +75,8 @@ export async function findMatches(userId: string) {
     if (pref.occupation === myPref.occupation) score++;
     if (pref.smoking === myPref.smoking) score++;
     if (myPref.genderPreference === "No Preference" || u.sex === myPref.genderPreference) score++;
-    if (!myPref.religion || !u.religion || u.religion === myPref.religion) score++;
-    if (!myPref.ethnicity || !u.ethnicity || u.ethnicity === myPref.ethnicity) score++;
+    if (pref.communicationStyle === myPref.communicationStyle) score++;
+    if (pref.socialEnergyLevel === myPref.socialEnergyLevel) score++;
     if (pref.ageMin <= myPref.ageMax && pref.ageMax >= myPref.ageMin) score++;
     if (pref.drinking === myPref.drinking) score++;
     if (
@@ -115,6 +116,9 @@ async function getAiMatchDescription(preferences: any, matchNames: string) {
 - Smoking: ${preferences.smoking ? "Yes" : "No"}
 - Drinking: ${preferences.drinking ? "Yes" : "No"}
 - Cooking: ${preferences.cooking}
+- Communication Style: ${preferences.communicationStyle}
+- Social Energy Level: ${preferences.socialEnergyLevel}
+
 
 Based on the data, the following users are good matches: ${matchNames}. Reply with a professional and simple message like:
 "Here are the possible matches for you."`,

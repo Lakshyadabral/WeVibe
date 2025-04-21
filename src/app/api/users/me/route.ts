@@ -20,8 +20,8 @@ export async function PUT(req: Request) {
       sex,
       occupation,
       preferredLocation,
-      ethnicity,
-      religion,
+      communicationStyle,
+      socialEnergyLevel,
       ageRange,
       genderPreference,
       accommodationType,
@@ -42,8 +42,8 @@ export async function PUT(req: Request) {
           upsert: {
             create: {
               preferredLocation,
-              ethnicity,
-              religion,
+              communicationStyle,
+              socialEnergyLevel,
               minAge: ageRange.min,
               maxAge: ageRange.max,
               sex,
@@ -61,8 +61,8 @@ export async function PUT(req: Request) {
             },
             update: {
               preferredLocation,
-              ethnicity,
-              religion,
+              communicationStyle,
+              socialEnergyLevel,
               minAge: ageRange.min,
               maxAge: ageRange.max,
               sex,

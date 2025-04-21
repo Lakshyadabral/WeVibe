@@ -44,8 +44,6 @@ async function seedDatabase() {
           createdAt: new Date(user.createdAt),
           preferences: {
             create: {
-              ethnicity: user.ethnicity,
-              religion: user.religion,
               minAge: user.ageRange.min,
               maxAge: user.ageRange.max,
               sex: user.sex,
@@ -61,6 +59,8 @@ async function seedDatabase() {
               drinking: user.habits.drinking,
               smoking: user.habits.smoking,
               cooking: user.cooking,
+              communicationStyle: user.communicationStyle,
+              socialEnergyLevel: user.socialEnergyLevel,
             },
           },
         },
