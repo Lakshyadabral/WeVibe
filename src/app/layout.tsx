@@ -28,9 +28,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            (function() {
-              document.documentElement.classList.add('dark');
-            })();
+            if (!("theme" in localStorage)) {
+              document.documentElement.classList.add("dark");
+            } else if (localStorage.theme === "dark") {
+              document.documentElement.classList.add("dark");
+            } else {
+              document.documentElement.classList.remove("dark");
+            }
           `,
         }}
       />
