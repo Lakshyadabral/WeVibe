@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import { CameraIcon } from "./_components/icons";
 import { SocialAccounts } from "./_components/social-accounts";
 import { uploadToCloudinary } from '@/lib/uploadToCloudinary';
+import { signOut } from "next-auth/react";
+
 
 export default function Page() {
   const { data: session, status } = useSession();
@@ -234,6 +236,28 @@ export default function Page() {
                 Edit Profile
               </button>
             )}
+                  <button
+        onClick={async () => {
+          if (!confirm("Are you sure you want to delete your profile? This action is irreversible.")) return;
+          try {
+            const res = await fetch("/api/users/delete", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userId: session?.user?.id }),
+            });
+
+            if (!res.ok) throw new Error("Failed to delete profile.");
+
+            await signOut({ callbackUrl: "/auth/sign-in" });
+          } catch (err) {
+            alert("Error deleting profile. Try again.");
+            console.error(err);
+          }
+        }}
+        className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+      >
+        Delete Profile
+      </button>
           </div>
 
           {/* <SocialAccounts /> */}
