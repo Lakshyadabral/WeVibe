@@ -64,6 +64,10 @@ const PreferencesForm = ({ initialData, onNext }: Props) => {
       newErrors['ageRange.min'] = 'Enter valid min age (18+)';
     }
 
+    if (form.ageRange.max > 35) {
+      newErrors['ageRange.max'] = 'Max age cannot exceed 35';
+    }    
+
     if (form.ageRange.max < form.ageRange.min) {
       newErrors['ageRange.max'] = 'Max age must be greater than min';
     }
