@@ -1,81 +1,114 @@
-# NextAdmin - Next.js Admin Dashboard Template and Components
+# WeVibe
 
-**NextAdmin** is a Free, open-source Next.js admin dashboard toolkit featuring 200+ UI components and templates that come with pre-built elements, components, pages, high-quality design, integrations, and much more to help you create powerful admin dashboards with ease.
+AI-Powered Roommate Matching Platform
+
+**weVibe** is a full-stack web application that helps users find compatible roommates based on lifestyle preferences, communication styles, and social energy levels. It features AI-powered matching, real-time chat, and premium feature gating — all built with modern full-stack technologies.
+
+---
+
+## 🔗 Live Demo
+
+👉 [we-vibe-green.vercel.app](https://we-vibe-green.vercel.app/auth/sign-in)
+
+---
+
+## 🚀 Features
+
+- 🔐 Secure authentication (NextAuth with OAuth + credentials)
+- 🧭 Multi-step onboarding to collect user lifestyle traits
+- 🤖 AI-based roommate matching using Together API
+- 💬 Real-time chat system using Socket.IO
+- 📤 Match request system with acceptance workflow
+- 🎯 Role-based access (User, Admin)
+- 💎 Premium feature gating (upgrade prompt, access control)
+- 📊 Admin dashboard with user and match stats
+
+---
+
+## 🏗️ Tech Stack
+
+| Layer       | Tech Used                                     |
+|-------------|-----------------------------------------------|
+| Frontend    | Next.js 15 (App Router), Tailwind, ShadCN UI  |
+| Backend     | Prisma ORM, MongoDB, NextAuth v5              |
+| Realtime    | Socket.IO (chat)                              |
+| AI Matching | Together AI API                               |
+| DevOps      | Vercel (Frontend), Railway (Backend), GitHub CI/CD |
+
+---
+
+## 🧩 Features
+
+- 🔐 **Auth**: OAuth + Credentials via NextAuth
+- 🧠 **AI Matching**: Lifestyle-based scoring via LLM
+- 🧭 **Onboarding**: Multi-step onboarding flow
+- 💬 **Chat**: Real-time messaging via Socket.IO
+- 👥 **Match Requests**: Send, accept, and track
+- 💎 **Premium Gating**: Feature access tied to roles
+- 🧑‍💼 **Admin Dashboard**: Role-restricted insights
+
+---
+
+## 🔒 Security
+
+- Passwords securely hashed via bcrypt
+
+- JWT-based session handling via NextAuth
+
+- Middleware-based route protection (middleware.ts)
+
+- Admin and premium access control via role and isPremium attributes
+
+- Sensitive values managed with .env and Vercel/Railway secrets
+
+---
+
+## 💳 Payments (MVP Mode)
+
+- Premium user gating based on isPremium flag in the database
+
+- Stripe integration is scaffolded but not yet active
+
+- Upgrade button simulates checkout flow for testing
+
+- Stripe test mode + webhook access control planned for production
+
+---
+
+## 📊 Admin Dashboard
+
+- Access restricted via role === "Admin" on the server
+
+- Displays key metrics: total users, premium subscribers, and match counts
+
+- Built with modular, reusable dashboard components
+
+- Route-based protection using layout + server auth validation
+
+---
+
+## 🧠 AI Matching
+
+- Uses onboarding data: cleanliness, sleep schedule, social energy, etc.
+
+- Pre-filters matches based on user-defined preferences
+
+- Sends formatted prompt to Together AI for compatibility scoring
+
+- Returns and renders top matches ranked by compatibility
+
+---
+
+## 💬 Real-Time Chat
+
+- Built with Socket.IO for instant messaging
+
+- Deployed via Railway (to bypass Vercel’s serverless socket limitations)
+
+- Chat messages sent and received in real time
+
+- Fallback message rendering via Prisma for persistence across reloads
+
+---
 
 
-[![nextjs admin template](https://cdn.pimjo.com/nextadmin-2.png)](https://nextadmin.co/)
-
-
-**NextAdmin** provides you with a diverse set of dashboard UI components, elements, examples and pages necessary for creating top-notch admin panels or dashboards with **powerful** features and integrations. Whether you are working on a complex web application or a basic website, **NextAdmin** has got you covered.
-
-### [✨ Visit Website](https://nextadmin.co/)
-### [🚀 Live Demo](https://demo.nextadmin.co/)
-### [📖 Docs](https://docs.nextadmin.co/)
-
-By leveraging the latest features of **Next.js 14** and key functionalities like **server-side rendering (SSR)**, **static site generation (SSG)**, and seamless **API route integration**, **NextAdmin** ensures optimal performance. With the added benefits of **React 18 advancements** and **TypeScript** reliability, **NextAdmin** is the ultimate choice to kickstart your **Next.js** project efficiently.
-
-## Installation
-
-1. Download/fork/clone the repo and Once you're in the correct directory, it's time to install all the necessary dependencies. You can do this by typing the following command:
-
-```
-npm install
-```
-If you're using **Yarn** as your package manager, the command will be:
-
-```
-yarn install
-```
-
-2. Okay, you're almost there. Now all you need to do is start the development server. If you're using **npm**, the command is:
-
-```
-npm run dev
-```
-And if you're using **Yarn**, it's:
-
-```
-yarn dev
-```
-
-And voila! You're now ready to start developing. **Happy coding**!
-
-## Highlighted Features
-**200+ Next.js Dashboard Ul Components and Templates** - includes a variety of prebuilt **Ul elements, components, pages, and examples** crafted with a high-quality design.
-Additionally, features seamless **essential integrations and extensive functionalities**.
-
-- A library of over **200** professional dashboard UI components and elements.
-- Five distinctive dashboard variations, catering to diverse use-cases.
-- A comprehensive set of essential dashboard and admin pages.
-- More than **45** **Next.js** files, ready for use.
-- Styling facilitated by **Tailwind CSS** files.
-- A design that resonates premium quality and high aesthetics.
-- A handy UI kit with assets.
-- Over ten web apps complete with examples.
-- Support for both **dark mode** and **light mode**.
-- Essential integrations including - Authentication (**NextAuth**), Database (**Postgres** with **Prisma**), and Search (**Algolia**).
-- Detailed and user-friendly documentation.
-- Customizable plugins and add-ons.
-- **TypeScript** compatibility.
-- Plus, much more!
-
-All these features and more make **NextAdmin** a robust, well-rounded solution for all your dashboard development needs.
-
-## Update Logs
-
-### Version 1.2.0 - Major Upgrade and UI Improvements - [Jan 27, 2025]
-
-- Upgraded to Next.js v15 and updated dependencies
-- API integration with loading skeleton for tables and charts.
-- Improved code structure for better readability.
-- Rebuilt components like dropdown, sidebar, and all ui-elements using accessibility practices.
-- Using search-params to store dropdown selection and refetch data.
-- Semantic markups, better separation of concerns and more.
-
-### Version 1.1.0
-- Updated Dependencies
-- Removed Unused Integrations
-- Optimized App
-
-### Version 1.0
-- Initial Release - [May 13, 2024]
